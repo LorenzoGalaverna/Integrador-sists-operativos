@@ -1,0 +1,63 @@
+#
+# frases_roast.txt
+# -------------------------------------------------------------------
+# Pool de frases de roast organizadas en secciones tipo INI.
+# Cada línea es una frase con placeholders que se reemplazan en runtime:
+#   %FILE%  -> nombre del archivo
+#   %COUNT% -> un número (líneas, ocurrencias, etc.)
+#   %WORD%  -> una palabra
+#   %DAYS%  -> cantidad de días
+#
+# Las líneas que empiezan con # o están vacías se ignoran.
+# Las secciones se declaran con [nombre] en su propia línea.
+# -------------------------------------------------------------------
+
+[patetico]
+Tu archivo %FILE% tiene %COUNT% líneas. Mi lista del super tiene más.
+%FILE% está más vacío que mi cuenta bancaria a fin de mes.
+%FILE% tiene %COUNT% líneas y ni una cosa útil. Impresionante.
+¿%FILE%? Lo abrí, tenía %COUNT% líneas, y me deprimí.
+%FILE% existe solo para que no te sientas mal por otros archivos peores.
+Con %COUNT% líneas, %FILE% es menos contenido que un tweet.
+%FILE% parece un "asdasd" con pretensiones.
+Anotaste %COUNT% líneas en %FILE% y después nunca lo volviste a abrir, ¿no?
+
+[egocentrico]
+%FILE% tiene %COUNT% líneas. ¿Es una novela o tu ego?
+%COUNT% líneas en %FILE%. Nadie va a leer todo eso, ni vos.
+%FILE% pesa %COUNT% líneas. Si fuera papel, deforestarías una provincia.
+Tu archivo %FILE% cree que es la Biblia con %COUNT% líneas.
+%FILE% con %COUNT% líneas. Recordá: concisión es un arte.
+Escribiste %COUNT% líneas en %FILE%. Tolstoy llamó, quiere su estilo de vuelta.
+
+[repetido]
+Usás "%WORD%" %COUNT% veces. Básicamente, no sabés decir otra cosa.
+"%WORD%" aparece %COUNT% veces. ¿Te la tatuaste?
+"%WORD%" x%COUNT%. El diccionario tiene más palabras, probá con otras.
+Repetiste "%WORD%" %COUNT% veces. Parece un loro con cafeína.
+"%WORD%": %COUNT% veces. El sinónimo es gratis, ¿sabías?
+%COUNT% veces "%WORD%". Tu profe de lengua está llorando en alguna parte.
+
+[todos]
+Tenés %COUNT% TODOs sin cerrar. El cementerio de tus intenciones.
+%COUNT% TODOs. Spoiler: no vas a hacer ninguno.
+Tus TODOs pendientes: %COUNT%. Tu nivel de optimismo: preocupante.
+%COUNT% TODOs abandonados. Cada uno es una promesa rota.
+Contaste %COUNT% TODOs. La procrastinación tiene números ahora.
+%COUNT% TODOs pendientes. Tu yo de hace un año te está puteando.
+
+[puteadas]
+Puteaste %COUNT% veces en tus archivos. Sos un poeta moderno.
+%COUNT% palabrotas detectadas. Tu vieja estaría orgullosa.
+Contamos %COUNT% puteadas. ¿Guiones para La Cámpora?
+Nivel "paciencia perdida": %COUNT% puteadas en total.
+%COUNT% puteadas. Hablás como te sale el café de la mañana.
+%COUNT% palabrotas. Recomiendo respirar antes de escribir.
+
+[abandonados]
+%FILE% no se toca hace %DAYS% días. Rest in peace.
+Hace %DAYS% días que %FILE% no sabe de vos. Tu ex entiende.
+%FILE% lleva %DAYS% días esperando que vuelvas. Es triste.
+%DAYS% días sin abrir %FILE%. ¿Lo escribiste en un coma?
+%FILE% extraña tu atención. %DAYS% días en el abandono.
+Abandonaste %FILE% hace %DAYS% días. Netflix tampoco te perdona.

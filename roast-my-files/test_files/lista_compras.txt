@@ -1,0 +1,10 @@
+- pan
+- leche
+- huevos
+- aceite
+- arroz
+- fideos
+- tomates
+- cebolla
+- ajo
+- queso
