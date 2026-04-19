@@ -61,3 +61,49 @@ Hace %DAYS% días que %FILE% no sabe de vos. Tu ex entiende.
 %DAYS% días sin abrir %FILE%. ¿Lo escribiste en un coma?
 %FILE% extraña tu atención. %DAYS% días en el abandono.
 Abandonaste %FILE% hace %DAYS% días. Netflix tampoco te perdona.
+
+# -------------------------------------------------------------------
+# FRASES ADICIONALES (más variedad para que no se repitan)
+# -------------------------------------------------------------------
+
+[patetico]
+%FILE% tiene menos contenido que un sticker de WhatsApp.
+Abrir %FILE% fue como abrir una heladera vacía: decepción pura.
+%COUNT% líneas en %FILE%. Ni para un commit de "initial commit".
+%FILE%: la prueba de que se puede crear un archivo sin tener nada que decir.
+%FILE% con %COUNT% líneas. Un post-it tiene más profundidad.
+
+[egocentrico]
+%FILE% es más largo que la cola del supermercado un viernes.
+Con %COUNT% líneas, %FILE% necesita su propio índice y bibliografía.
+%FILE% tiene %COUNT% líneas. ¿Estás escribiendo el Quijote 2?
+%COUNT% líneas. Kafka sería más conciso que vos.
+%FILE% tiene tantas líneas que mi scroll se quejó.
+
+[repetido]
+"%WORD%" %COUNT% veces. Tu teclado ya tiene esa tecla gastada.
+Repetiste "%WORD%" %COUNT% veces. Es un tic nervioso literario.
+"%WORD%" x%COUNT%. ¿Sabés que existen los sinónimos, no?
+"%WORD%" aparece %COUNT% veces. Ya es tu marca personal, no una palabra.
+"%WORD%" %COUNT% veces. ¿Te pagan por repetición?
+
+[todos]
+%COUNT% TODOs. El backlog de tus sueños rotos.
+Con %COUNT% TODOs pendientes, tu código es una carta al futuro que nadie va a leer.
+%COUNT% TODOs. Cada uno es un "mañana lo hago" que nunca llegó.
+Tenés %COUNT% TODOs. A este ritmo vas a jubilar antes de terminarlos.
+%COUNT% TODOs pendientes. Tu nivel de optimismo es clínicamente preocupante.
+
+[puteadas]
+%COUNT% puteadas. ¿Programás o peleás con el código?
+Con %COUNT% palabrotas, tu código necesita censura parental.
+%COUNT% puteadas detectadas. Tu código suena como un vestuario de fútbol.
+Nivel de frustración: %COUNT% puteadas. ¿Todo bien en casa?
+%COUNT% puteadas. Si por cada una donaras un peso, sos millonario.
+
+[abandonados]
+%FILE% no se toca hace %DAYS% días. Capaz ni te acordás qué tiene adentro.
+%DAYS% días sin tocar %FILE%. ¿Lo creaste en un arrebato y lo olvidaste?
+%FILE% lleva %DAYS% días juntando polvo digital. Dale cariño.
+Hace %DAYS% días que %FILE% está en coma. ¿Desenchufamos?
+%FILE% te espera hace %DAYS% días. Más fiel que tu ex.

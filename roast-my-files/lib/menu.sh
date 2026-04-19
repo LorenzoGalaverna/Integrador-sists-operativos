@@ -67,8 +67,10 @@ menu_main() {
             "5" "📌 Cementerio de TODOs" \
             "6" "🤬 Ranking de puteadas" \
             "7" "😴 Archivos abandonados" \
-            "8" "🔍 Modo serio — gestor de búsqueda" \
-            "9" "💾 Exportar reporte completo" \
+            "8" "🏆 Logros desbloqueados" \
+            "9" "⚔️  Duelo de archivos" \
+            "a" "🔍 Modo serio — gestor de búsqueda" \
+            "b" "💾 Exportar reporte completo" \
             "c" "📂 Cambiar carpeta víctima" \
             "0" "❌ Salir"); then
             # Usuario canceló con ESC — preguntamos si quiere salir
@@ -79,15 +81,17 @@ menu_main() {
         fi
 
         case "${opcion}" in
-            1) roast_completo    "${DIRECTORIO_VICTIMA}" ;;
-            2) roast_patetico    "${DIRECTORIO_VICTIMA}" ;;
-            3) roast_ego         "${DIRECTORIO_VICTIMA}" ;;
-            4) roast_repetido    "${DIRECTORIO_VICTIMA}" ;;
-            5) roast_todos       "${DIRECTORIO_VICTIMA}" ;;
-            6) roast_puteadas    "${DIRECTORIO_VICTIMA}" ;;
-            7) roast_abandonados "${DIRECTORIO_VICTIMA}" ;;
-            8) menu_search       ;;
-            9) report_generate   "${DIRECTORIO_VICTIMA}" ;;
+            1) roast_completo        "${DIRECTORIO_VICTIMA}" ;;
+            2) roast_patetico        "${DIRECTORIO_VICTIMA}" ;;
+            3) roast_ego             "${DIRECTORIO_VICTIMA}" ;;
+            4) roast_repetido        "${DIRECTORIO_VICTIMA}" ;;
+            5) roast_todos           "${DIRECTORIO_VICTIMA}" ;;
+            6) roast_puteadas        "${DIRECTORIO_VICTIMA}" ;;
+            7) roast_abandonados     "${DIRECTORIO_VICTIMA}" ;;
+            8) achievements_mostrar  "${DIRECTORIO_VICTIMA}" ;;
+            9) duelo_archivos        "${DIRECTORIO_VICTIMA}" ;;
+            a|A) menu_search       ;;
+            b|B) report_generate   "${DIRECTORIO_VICTIMA}" ;;
             c|C) menu_pedir_directorio_victima ;;
             0|"")
                 if ui_yesno "Salir" "¿Salir de Roast My Files?"; then

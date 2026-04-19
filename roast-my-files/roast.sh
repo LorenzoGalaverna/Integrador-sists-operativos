@@ -79,6 +79,10 @@ source "${LIB_DIR}/stats.sh"
 source "${LIB_DIR}/search.sh"
 # shellcheck source=lib/roasts.sh
 source "${LIB_DIR}/roasts.sh"
+# shellcheck source=lib/achievements.sh
+source "${LIB_DIR}/achievements.sh"
+# shellcheck source=lib/duelo.sh
+source "${LIB_DIR}/duelo.sh"
 # shellcheck source=lib/report.sh
 source "${LIB_DIR}/report.sh"
 # shellcheck source=lib/menu.sh

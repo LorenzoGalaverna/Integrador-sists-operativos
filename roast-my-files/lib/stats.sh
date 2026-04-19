@@ -336,3 +336,79 @@ stats_fecha_legible() {
     local epoch="$1"
     date -d "@${epoch}" '+%Y-%m-%d' 2>/dev/null || echo "fecha desconocida"
 }
+
+# ===================================================================
+# DETECCIÓN DE MAYÚSCULAS Y DUPLICADOS
+# ===================================================================
+
+# -------------------------------------------------------------------
+# stats_lineas_gritando - cuenta líneas que son mayormente MAYÚSCULAS
+# (5+ caracteres alfabéticos, más del 70% en mayúsculas).
+#
+# Usa awk con gsub para contar mayúsculas y minúsculas por línea.
+# El truco: gsub() devuelve el número de sustituciones hechas, y al
+# reemplazar letras por sí mismas no altera el texto, solo las cuenta.
+#
+# Pipeline: concatenar archivos → awk analiza cada línea.
+#
+# args: $1 = directorio
+# stdout: número de líneas "gritando"
+# -------------------------------------------------------------------
+stats_lineas_gritando() {
+    local dir="$1"
+    local archivo
+
+    {
+        while IFS= read -r archivo; do
+            cat -- "${archivo}" 2>/dev/null || true
+        done < <(stats_listar_archivos "${dir}")
+    } | awk '
+        length >= 5 {
+            linea = $0
+            upper = gsub(/[A-Z]/, "X", linea)
+            linea = $0
+            lower = gsub(/[a-z]/, "x", linea)
+            alpha = upper + lower
+            if (alpha > 0 && upper > alpha * 0.7) total++
+        }
+        END { print total+0 }
+    '
+}
+
+# -------------------------------------------------------------------
+# stats_lineas_duplicadas - cuenta cuántas líneas aparecen repetidas
+# entre todos los archivos de texto del directorio.
+#
+# Ignora líneas vacías y muy cortas (< 3 chars) para evitar falsos
+# positivos con líneas triviales como "}" o "fi".
+#
+# Pipeline: concatenar todo → awk cuenta frecuencias → suma extras.
+# "Extras" = para cada línea que aparece N veces, cuenta N-1
+# (la primera aparición es legítima, las demás son duplicados).
+#
+# args: $1 = directorio
+# stdout: número de líneas duplicadas (extras, no el total)
+# -------------------------------------------------------------------
+stats_lineas_duplicadas() {
+    local dir="$1"
+    local archivo
+
+    {
+        while IFS= read -r archivo; do
+            cat -- "${archivo}" 2>/dev/null || true
+        done < <(stats_listar_archivos "${dir}")
+    } | awk '
+        NF > 0 && length >= 3 {
+            count[$0]++
+        }
+        END {
+            total = 0
+            for (line in count) {
+                if (count[line] > 1) {
+                    total += count[line] - 1
+                }
+            }
+            print total
+        }
+    '
+}
