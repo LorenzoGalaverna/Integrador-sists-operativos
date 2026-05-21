@@ -160,12 +160,15 @@ stats_top_words() {
             }
         }' > "${tmp_texto}" || true
 
+    # Sin palabras tokenizadas no hay nada que rankear
+    [[ ! -s "${tmp_texto}" ]] && return 0
+
     # Paso 3-5: filtrar stopwords y rankear
     if [[ -s "${stopwords}" ]]; then
         grep -vxFf "${stopwords}" "${tmp_texto}" 2>/dev/null \
             | sort | uniq -c | sort -rn | head -n "${n}" || true
     else
-        sort "${tmp_texto}" | uniq -c | sort -rn | head -n "${n}"
+        sort "${tmp_texto}" | uniq -c | sort -rn | head -n "${n}" || true
     fi
 }
 
@@ -262,15 +265,17 @@ stats_puteadas_ranking() {
 # -------------------------------------------------------------------
 stats_oldest_file() {
     local dir="$1"
-    local archivo
-    local epoch
+    local archivo epoch
+    local tmp_datos
+    tmp_datos=$(crear_tempfile)
 
-    {
-        while IFS= read -r archivo; do
-            epoch=$(stat -c '%Y' "${archivo}" 2>/dev/null || echo 0)
-            printf '%d\t%s\n' "${epoch}" "${archivo}"
-        done < <(stats_listar_archivos "${dir}")
-    } | sort -n | head -1
+    while IFS= read -r archivo; do
+        epoch=$(stat -c '%Y' "${archivo}" 2>/dev/null || echo 0)
+        printf '%d\t%s\n' "${epoch}" "${archivo}"
+    done < <(stats_listar_archivos "${dir}") > "${tmp_datos}"
+
+    [[ ! -s "${tmp_datos}" ]] && return 0
+    sort -n "${tmp_datos}" | head -1
 }
 
 # -------------------------------------------------------------------
@@ -280,18 +285,20 @@ stats_oldest_file() {
 # -------------------------------------------------------------------
 stats_shortest_file() {
     local dir="$1"
-    local archivo
-    local lineas
+    local archivo lineas
+    local tmp_datos
+    tmp_datos=$(crear_tempfile)
 
-    {
-        while IFS= read -r archivo; do
-            lineas=$(stats_line_count_file "${archivo}")
-            # Ignorar vacíos para no premiar el caso trivial
-            if (( lineas > 0 )); then
-                printf '%d\t%s\n' "${lineas}" "${archivo}"
-            fi
-        done < <(stats_listar_archivos "${dir}")
-    } | sort -n | head -1
+    while IFS= read -r archivo; do
+        lineas=$(stats_line_count_file "${archivo}")
+        # Ignorar vacíos para no premiar el caso trivial
+        if (( lineas > 0 )); then
+            printf '%d\t%s\n' "${lineas}" "${archivo}"
+        fi
+    done < <(stats_listar_archivos "${dir}") > "${tmp_datos}"
+
+    [[ ! -s "${tmp_datos}" ]] && return 0
+    sort -n "${tmp_datos}" | head -1
 }
 
 # -------------------------------------------------------------------
@@ -301,15 +308,17 @@ stats_shortest_file() {
 # -------------------------------------------------------------------
 stats_longest_file() {
     local dir="$1"
-    local archivo
-    local lineas
+    local archivo lineas
+    local tmp_datos
+    tmp_datos=$(crear_tempfile)
 
-    {
-        while IFS= read -r archivo; do
-            lineas=$(stats_line_count_file "${archivo}")
-            printf '%d\t%s\n' "${lineas}" "${archivo}"
-        done < <(stats_listar_archivos "${dir}")
-    } | sort -rn | head -1
+    while IFS= read -r archivo; do
+        lineas=$(stats_line_count_file "${archivo}")
+        printf '%d\t%s\n' "${lineas}" "${archivo}"
+    done < <(stats_listar_archivos "${dir}") > "${tmp_datos}"
+
+    [[ ! -s "${tmp_datos}" ]] && return 0
+    sort -rn "${tmp_datos}" | head -1
 }
 
 # ===================================================================
