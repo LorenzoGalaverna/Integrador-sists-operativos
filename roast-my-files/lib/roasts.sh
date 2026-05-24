@@ -561,11 +561,11 @@ roast_completo() {
         printf '===================================================\n\n'
         printf '  Carpeta analizada:\n'
         printf '  %s\n\n' "${dir}"
-        printf '---------------------------------------------------\n\n'
+        printf '%s\n\n' '---------------------------------------------------'
         printf '                NOTA:  [ %s ]\n' "${nota}"
         printf '                SCORE: %d / 100\n\n' "${score}"
         printf '  "%s"\n\n' "${frase}"
-        printf '---------------------------------------------------\n\n'
+        printf '%s\n\n' '---------------------------------------------------'
         printf '  Estadísticas finales:\n'
         printf '    Archivos analizados: %d\n' "${total_files}"
         printf '    Total de palabras:   %d\n' "${total_words}"
